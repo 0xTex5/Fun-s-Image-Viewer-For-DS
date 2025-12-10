@@ -43,7 +43,7 @@ Then, run this command with ImageMagick in your terminal at the root folder,
 
 
 
-
+Windows Command:
 magick.exe PUTIMGHERE/whateveryourimageisnamed.imageextension PUTIMGHERE/img.png
 
 Linux Command:
@@ -70,7 +70,7 @@ If you don't, run this command with ImageMagick at the root folder,
 
 
 
-
+Windows Command:
 magick.exe PUTIMGHERE/img.png -resize 256x192! -colors 256 PNG8:data/output.png
 
 Linux Command:
