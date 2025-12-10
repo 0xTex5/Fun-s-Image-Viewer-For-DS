@@ -4,8 +4,15 @@ FUN'S IMAGE VIEWER FOR DS--FUN'S IMAGE VIEWER FOR DS--FUN'S IMAGE VIEWER FOR DS-
 
 Quick Commands:
 
+Windows:
 magick.exe PUTIMGHERE/whateveryourimageisnamed.imageextension PUTIMGHERE/img.png
 magick.exe PUTIMGHERE/img.png -resize 256x192! -colors 256 PNG8:data/output.png
+
+Linux:
+./magick PUTIMGHERE/whateveryourimageisnamed.imageextension PUTIMGHERE/img.png
+./magick PUTIMGHERE/img.png -resize 256x192! -colors 256 PNG8:data/output.png
+
+
 
 
 
@@ -39,6 +46,9 @@ Then, run this command with ImageMagick in your terminal at the root folder,
 
 magick.exe PUTIMGHERE/whateveryourimageisnamed.imageextension PUTIMGHERE/img.png
 
+Linux Command:
+./magick PUTIMGHERE/whateveryourimageisnamed.imageextension PUTIMGHERE/img.png
+
 
 
 
@@ -63,7 +73,8 @@ If you don't, run this command with ImageMagick at the root folder,
 
 magick.exe PUTIMGHERE/img.png -resize 256x192! -colors 256 PNG8:data/output.png
 
-
+Linux Command:
+./magick PUTIMGHERE/img.png -resize 256x192! -colors 256 PNG8:data/output.png
 
 
 
