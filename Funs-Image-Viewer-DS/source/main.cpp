@@ -1,8 +1,3 @@
-/*---------------------------------------------------------------------------------
-
-	$Id: main.cpp,v 1.13 2008-12-02 20:21:20 dovoto Exp $
-
----------------------------------------------------------------------------------*/
 #include <nds.h>
 #include <stdio.h>
 #include <iostream>
@@ -24,28 +19,22 @@ bool showPrint = true;
 
 bool pictureViewed = false;
 
-//---------------------------------------------------------------------------------
 // VBlank interrupt handler. This function is executed in IRQ mode - be careful!
-//---------------------------------------------------------------------------------
 static void Vblank() {
-//---------------------------------------------------------------------------------
 	frame++;
 }
 
-	 	std::random_device rd1; // obtain a random number from hardware
-
-		std::random_device rd2; // obtain a random number from hardware
-    	
-		std::random_device rd3; // obtain a random number from hardware
-		
-		std::uniform_int_distribution<> distr(0, 255); // define the range
+std::random_device rd1;
+std::random_device rd2;
+std::random_device rd3;
+std::uniform_int_distribution<> distr(0, 255); // define the range
     	
 
 void testPrint(const char* keyPressed) {
 
-		std::mt19937 gen1(rd1()); // seed the generator
-		std::mt19937 gen2(rd2()); // seed the generator
-		std::mt19937 gen3(rd3()); // seed the generator
+		std::mt19937 gen1(rd1()); // seed the generators
+		std::mt19937 gen2(rd2());
+		std::mt19937 gen3(rd3());
 
 		rgb1 = distr(gen1);
 		rgb2 = distr(gen2);
@@ -53,16 +42,13 @@ void testPrint(const char* keyPressed) {
 
 
 		backkdropColor = RGB15(rgb1, rgb2, rgb3);
-		//std::cout << backkdropColor << "\n";
 
-
-		//std::cout << "Key " << keyPressed << " Pressed" << "\n";
 }
 
 void rerollColor() {
-		std::mt19937 gen1(rd1()); // seed the generator
-		std::mt19937 gen2(rd2()); // seed the generator
-		std::mt19937 gen3(rd3()); // seed the generator
+		std::mt19937 gen1(rd1());
+		std::mt19937 gen2(rd2());
+		std::mt19937 gen3(rd3());
 
 		rgb1 = distr(gen1);
 		rgb2 = distr(gen2);
@@ -70,7 +56,6 @@ void rerollColor() {
 
 
 		backkdropColor = RGB15(rgb1, rgb2, rgb3);
-
 
 }
 
@@ -90,12 +75,9 @@ void showhideprint() {
 
 	}
 
-
 }
 
-//---------------------------------------------------------------------------------
 int main(void) {
-//---------------------------------------------------------------------------------
 
 	int box1 = 0;
 	int boy1 = 0;
@@ -117,8 +99,6 @@ int main(void) {
 	
 
 
-
-
 	videoSetMode(MODE_5_3D); 
 	vramSetBankA(VRAM_A_MAIN_BG_0x06000000);
 
@@ -127,21 +107,6 @@ int main(void) {
 
 	while(pmMainLoop()) {
 		
-		/*if (!pictureViewed) {
-
-			glBegin2D();
-
-			glBoxFilled(box1, boy1, box2, boy2, backkdropColor);
-
-
-
-
-			glEnd2D();
-
-			glFlush(0);
-		}*/
-
-
 		scanKeys();
 
 		int keys = keysDown();
@@ -149,55 +114,17 @@ int main(void) {
 			break;
 		} 
 
-		if (keys & KEY_A) {
-			rerollColor();
+    if (keys & KEY_A || keys & KEY_B || keys & KEY_X || keys & KEY_Y || keys & KEY_UP || keys & KEY_DOWN || keys & KEY_LEFT || keys & KEY_RIGHT) {
+      rerollColor();
+    } 
 
-
-		}
-		if (keys & KEY_B) {
-			rerollColor();
-
-
-		}
-		if (keys & KEY_X) {
-			rerollColor();
-
-
-		}
-		if (keys & KEY_Y) {
-			rerollColor();
-
-
-		}
 		if (keys & KEY_R) {
 			showhideprint();
 
 
 		}
-		if (keys & KEY_UP) {
-			rerollColor();
-
-
-		}
-		if (keys & KEY_DOWN) {
-			rerollColor();
-
-
-		}
-		if (keys & KEY_LEFT) {
-			rerollColor();
-
-
-		}
-		if (keys & KEY_RIGHT) {
-			rerollColor();
-
-
-		}
 		if (keys & KEY_START) {
 			pictureViewed = true;
-			//glEnd2D();
-			//glFlush(0);
 			if (viewImage()) {
 
 				std::cout << "	Image Loaded Successfully" << "\n";
@@ -216,10 +143,6 @@ int main(void) {
 
 
 		//std::cout << "Current Frame : " << frame << "\n";
-
-		//std::cout << "DS Touch X axis: " << touchXY.rawx, touchXY.px;
-
-		//std::cout << "DS Touch Y axis: " << touchXY.rawy, touchXY.py;
 
 	}
 
