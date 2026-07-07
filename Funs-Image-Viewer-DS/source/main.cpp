@@ -59,6 +59,13 @@ void rerollColor() {
 
 }
 
+void initprint() {
+	std::cout << "	  Fun's Image Viewer For DS" << "\n\n\n";
+	std::cout << "Press START to view img.png," << "\n";
+	std::cout << "	   in 256 color png format" << "\n\n";
+	std::cout << "	  Press R to Show/Hide Text" << "\n\n";
+	std::cout << "	  Press SELECT to exit" << "\n\n";
+}
 
 void showhideprint() {
 	if (showPrint == true) {
@@ -67,12 +74,7 @@ void showhideprint() {
 
 	} else if (showPrint == false) {
 		showPrint = true;
-		std::cout << "	  Fun's Image Viewer For DS" << "\n\n\n";
-		std::cout << "Press START to view img.png," << "\n";
-		std::cout << "	   in 256 color png format" << "\n\n";
-		std::cout << "	  Press R to Show/Hide Text" << "\n\n";
-		std::cout << "	  Press SELECT to exit" << "\n\n";
-
+		initprint();
 	}
 
 }
@@ -90,14 +92,7 @@ int main(void) {
 
 	consoleDemoInit();
 
-
-	std::cout << "	  Fun's Image Viewer For DS" << "\n\n\n";
-	std::cout << "Press START to view img.png," << "\n";
-	std::cout << "	   in 256 color png format" << "\n\n";
-	std::cout << "	  Press R to Show/Hide Text" << "\n\n";
-	std::cout << "	  Press SELECT to exit" << "\n\n";	
-	
-
+	initprint();
 
 	videoSetMode(MODE_5_3D); 
 	vramSetBankA(VRAM_A_MAIN_BG_0x06000000);
